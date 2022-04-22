@@ -1,12 +1,12 @@
 .PHONY: build clean run run-pulse
 
 build:
-	docker stop mopidy-full || true
-	docker rm mopidy-full || true
-
-clean:
 	docker build -t mopidy-base ../base
 	docker build -t mopidy-full .
+
+clean:
+	docker stop mopidy-full || true
+	docker rm mopidy-full || true
 
 run:
 	docker run --rm \
