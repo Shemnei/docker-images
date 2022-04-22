@@ -3,8 +3,12 @@
 A [mopidy](https://github.com/mopidy/mopidy) container as base for other containers.
 
 __THIS IMAGE HAS NO ADDITIONAL EXTENSIONS INSTALLED BESIDES THE BUNDLED ONES.__
+For an image with extensions see [here](../full).
 
-The `Dockerfile` is inspired by <https://github.com/nolte/docker-mopidy> and <https://github.com/wernight/docker-mopidy> but with all extensions removed.
+Related/Inspirations:
+
+- <https://github.com/nolte/docker-mopidy>
+- <https://github.com/wernight/docker-mopidy>
 
 ## Build
 
@@ -12,7 +16,20 @@ The `Dockerfile` is inspired by <https://github.com/nolte/docker-mopidy> and <ht
 docker build -t mopidy-base .
 ```
 
+## Docker
+
+__Ports:__
+
+- `6680/tcp`: webui
+
+__Volumes:__
+
+- `/config`: Config directory (expects a `mopidy.conf` in it)
+- `/var/lib/mopidy/playlists`: Playlist files in `m3u` format
+
 ## Run
+
+Native sound:
 
 ```bash
 docker run --rm \
@@ -25,8 +42,20 @@ docker run --rm \
 	mopidy-base
 ```
 
-Both volumes are optional.
-The port is used for the `http` extension (web-ui).
+Pulse native:
+
+```bash
+docker run --rm \
+	--name mopidy-base \
+	--user root \
+	--volume <CONFIG_DIR>:/config \
+	--volume <PLAYLISTS_DIR>:/var/lib/mopidy/playlists \
+	--volume /run/user/$UID/pulse:/run/user/105/pulse \
+	--publish 6680:6680 \
+	mopidy-base
+```
+
+For more/up-to-date commands look at the [Makefile](Makefile).
 
 ## Config
 
