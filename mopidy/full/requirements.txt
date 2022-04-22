@@ -3,14 +3,15 @@ yt-dlp # Mopidy-Youtube
 ytmusicapi # Mopidy-Youtube: Not required but extension fails without it
 
 # Backends
-#Mopidy-Podcast
-#Mopidy-Jellyfin
-#Mopidy-SoundCloud
-#Mopidy-Spotify
+Mopidy-Podcast
+Mopidy-Jellyfin
+Mopidy-SoundCloud
+Mopidy-Spotify
 Mopidy-Youtube
+Mopidy-Local
 
 # Clients
 Mopidy-Iris
 
 # Frontends
-#Mopidy-MPD
+Mopidy-MPD

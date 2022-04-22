@@ -28,5 +28,3 @@ RUN set -eux pipefail \
 
 # MPD port
 EXPOSE 6600
-
-CMD ["/usr/bin/dumb-init", "/usr/bin/mopidy", "-vvvv"]
