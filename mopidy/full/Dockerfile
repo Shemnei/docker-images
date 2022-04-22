@@ -18,10 +18,13 @@ RUN set -eux pipefail \
 # REQUIRED by iris
 RUN echo "mopidy ALL=NOPASSWD: /usr/local/lib/python3.7/dist-packages/mopidy_iris/system.sh" >> /etc/sudoers
 
+COPY requirements.txt /tmp/requirements.txt
+RUN set -eux pipefail \
+  && chmod o+r /tmp/requirements.txt
+
 USER mopidy
 
 # Install extensions
-COPY requirements.txt /tmp/requirements.txt
 RUN set -eux pipefail \
   && python3 -m pip install --no-cache-dir --upgrade pip \
   && python3 -m pip install --no-cache-dir -r /tmp/requirements.txt --upgrade
