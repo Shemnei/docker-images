@@ -1,0 +1,16 @@
+# Dependencies
+yt-dlp # Mopidy-Youtube
+ytmusicapi # Mopidy-Youtube: Not required but extension fails without it
+
+# Backends
+#Mopidy-Podcast
+#Mopidy-Jellyfin
+#Mopidy-SoundCloud
+#Mopidy-Spotify
+Mopidy-Youtube
+
+# Clients
+Mopidy-Iris
+
+# Frontends
+#Mopidy-MPD
